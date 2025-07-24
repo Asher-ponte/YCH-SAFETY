@@ -52,13 +52,14 @@
 <body class="bg-background text-foreground">
 
     <div class="flex flex-col min-h-screen">
-        <!-- Header Section - Enhanced with gradient background and reduced padding -->
-        <header class="bg-gradient-to-r from-blue-600 to-blue-800 border-b shadow-sm sticky top-0 z-10">
-            <div class="container mx-auto px-4 py-4 flex items-center justify-center">
+        <!-- Header Section - Enhanced with darker background and reduced padding -->
+        <header class="bg-gray-800 border-b shadow-sm sticky top-0 z-10">
+            <div class="container mx-auto px-4 py-4 flex items-center justify-start"> <!-- Changed justify-center to justify-start -->
                 <!-- Logo Image -->
-                <img src="public/image/ych.png" alt="QAEHS Logo" class="h-10 w-10 mr-3 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/40x40/cccccc/000000?text=Error';"/>
-                <!-- Centered and bold/strong font for the title -->
-                <h1 class="text-3xl font-bold text-white tracking-tight">QAEHS Central</h1>
+                <!-- flex-shrink-0 ensures the image doesn't shrink, object-contain makes sure it fits within its dimensions -->
+                <img src="public/image/ych.png" alt="QAEHS Logo" class="h-10 w-10 mr-3 object-contain flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/40x40/cccccc/000000?text=Error';"/>
+                <!-- Title with flex-grow to occupy remaining space -->
+                <h1 class="text-3xl font-bold text-white tracking-tight flex-grow">QAEHS Central</h1>
             </div>
         </header>
 
