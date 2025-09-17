@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QAEHS Central</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // tailwind css configuration for custom colors and font family
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Custom color palette for elegant and futuristic design
+                        background: 'hsl(220, 20%, 10%)', // Dark background
+                        foreground: 'hsl(0, 0%, 95%)',  // White/light text
+                        card: {
+                            default: 'hsla(220, 15%, 20%, 0.6)', // Semi-transparent dark card
+                            foreground: 'hsl(0, 0%, 95%)', // White text on card
+                        },
+                        primary: {
+                            default: 'hsl(190, 80%, 60%)', // Luminous blue/teal accent
+                            foreground: 'hsl(220, 20%, 10%)', // Dark text on primary button
+                        },
+                        muted: {
+                            default: 'hsla(220, 10%, 30%, 0.4)', // Muted elements
+                            foreground: 'hsl(190, 80%, 70%)', // Lighter accent for subtle text
+                        },
+                        border: 'hsla(190, 80%, 60%, 0.3)', // Soft, glowing border
+                        glow: 'hsla(190, 80%, 60%, 0.4)', // For the box shadow glow effect
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* basic body styling for font smoothing and a new gradient background */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            /* A clean, dark gradient for a modern and sleek look */
+            background: linear-gradient(to bottom right, hsl(220, 20%, 10%), hsl(220, 15%, 15%));
+            background-attachment: fixed; /* Keep pattern fixed while scrolling */
+        }
+
+        /* Custom glow effect for cards */
+        .card-glow-effect {
+            box-shadow: 0 0px 10px hsla(190, 80%, 60%, 0.2), /* Inner, softer glow */
+                        0 0px 20px hsla(190, 80%, 60%, 0.15), /* Outer glow */
+                        0 0px 30px hsla(190, 80%, 60%, 0.1); /* Wider, subtle glow */
+            /* Add backdrop-filter for frosted glass effect if a background is truly behind it */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        /* Specific hover glow */
+        .card-hover-glow:hover {
+            box-shadow: 0 0px 15px hsla(190, 80%, 60%, 0.4),
+                        0 0px 25px hsla(190, 80%, 60%, 0.3),
+                        0 0px 40px hsla(190, 80%, 60%, 0.2);
+            border-color: hsl(190, 80%, 60%); /* Stronger border on hover */
+            transform: translateY(-5px) scale(1.02); /* Slight lift and scale */
+        }
+
+        .header-glow {
+            box-shadow: 0 2px 10px hsla(190, 80%, 60%, 0.15),
+                        0 1px 5px hsla(190, 80%, 60%, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+
+    <div class="flex flex-col min-h-screen">
+        <!-- Adjusted header for mobile app feel -->
+        <header class="bg-gradient-to-r from-background to-gray-800/60 backdrop-blur-sm border-b border-primary/20 sticky top-0 z-10 header-glow">
+            <!-- Reduced padding and text/icon size for a more compact feel -->
+            <div class="container mx-auto px-6 py-4 md:py-5 flex items-center justify-start gap-4">
+                <img src="public/image/QAEHS.png" alt="qaehs logo" class="h-8 w-8 sm:h-10 sm:w-10 object-contain flex-shrink-0 opacity-80" onerror="this.onerror=null;this.src='https://placehold.co/40x40/cccccc/000000?text=error';"/>
+                <!-- Text with gradient and adjusted size/font weight -->
+                <h1 class="text-xl sm:text-2xl md:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary-default to-cyan-200 tracking-wide flex-grow min-w-0 truncate">QAEHS Central</h1>
+                <div class="flex items-center gap-4">
+                    <button class="text-foreground hover:text-primary transition-colors text-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 0 0 1-3.46 0"></path></svg>
+                    </button>
+                    <button class="text-foreground hover:text-primary transition-colors text-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 0 0 0-4-4H8a4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow container mx-auto px-4 py-10 md:py-20 max-w-7xl">
+            <!-- Adjusted card grid for better mobile spacing -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 sm:gap-8 md:gap-10">
+                <a href="https://qaehs-system.kesug.com/" target="_blank" rel="noopener noreferrer" class="group block relative">
+                    <div class="card-glow-effect card-hover-glow transition-all duration-500 ease-in-out
+                                bg-gradient-to-br from-card-default to-card-muted/80 border border-border rounded-xl shadow-lg
+                                flex flex-col items-center justify-center w-full aspect-square p-4 sm:p-6 md:p-8">
+                        <div class="flex-grow flex items-center justify-center mb-2">
+                             <img src="public/image/SOR.png" alt="sor app icon" class="h-16 w-16 sm:h-20 sm:w-20 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/80x80/1a2a3a/000000?text=Error'; this.style.filter='invert(1)'"/>
+                        </div>
+                        <p class="text-card-foreground text-sm sm:text-base font-light text-center leading-tight">
+                            QAEHS <span class="text-primary-default font-medium">PRO</span> SOR
+                        </p>
+                    </div>
+                </a>
+
+                <a href="http://10.232.249.226:3000" target="_blank" rel="noopener noreferrer" class="group block relative">
+                    <div class="card-glow-effect card-hover-glow transition-all duration-500 ease-in-out
+                                bg-gradient-to-br from-card-default to-card-muted/80 border border-border rounded-xl shadow-lg
+                                flex flex-col items-center justify-center w-full aspect-square p-4 sm:p-6 md:p-8">
+                        <div class="flex-grow flex items-center justify-center mb-2">
+                            <img src="public/image/inspect.png" alt="forklift icon" class="h-16 w-16 sm:h-20 sm:w-20 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/80x80/1a2a3a/000000?text=Error'; this.style.filter='invert(1)'"/>
+                        </div>
+                        <p class="text-card-foreground text-sm sm:text-base font-light text-center leading-tight">
+                            FORKLIFT <span class="text-primary-default font-medium">PRO</span> INSPECTION
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://qaehspro.vercel.app/" target="_blank" rel="noopener noreferrer" class="group block relative">
+                    <div class="card-glow-effect card-hover-glow transition-all duration-500 ease-in-out
+                                bg-gradient-to-br from-card-default to-card-muted/80 border border-border rounded-xl shadow-lg
+                                flex flex-col items-center justify-center w-full aspect-square p-4 sm:p-6 md:p-8">
+                        <div class="flex-grow flex items-center justify-center mb-2">
+                            <img src="Public/image/QAEHS.png" alt="training icon" class="h-16 w-16 sm:h-20 sm:w-20 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/80x80/1a2a3a/000000?text=Error'; this.style.filter='invert(1)'"/>
+                        </div>
+                        <p class="text-card-foreground text-sm sm:text-base font-light text-center leading-tight">
+                            QAEHS <span class="text-primary-default font-medium">PRO</span> ACADEMY
+                        </p>
+                    </div>
+                </a>
+                
+                <a href="https://safety-six-delta.vercel.app/" target="_blank" rel="noopener noreferrer" class="group block relative">
+                    <div class="card-glow-effect card-hover-glow transition-all duration-500 ease-in-out
+                                bg-gradient-to-br from-card-default to-card-muted/80 border border-border rounded-xl shadow-lg
+                                flex flex-col items-center justify-center w-full aspect-square p-4 sm:p-6 md:p-8">
+                        <div class="flex-grow flex items-center justify-center mb-2">
+                            <img src="https://placehold.co/80x80/1a2a3a/ffffff?text=REPORT" alt="ehs ir icon" class="h-16 w-16 sm:h-20 sm:w-20 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/80x80/1a2a3a/000000?text=Error'; this.style.filter='invert(1)'"/>
+                        </div>
+                        <p class="text-card-foreground text-sm sm:text-base font-light text-center leading-tight">
+                            QAEHS <span class="text-primary-default font-medium">PRO</span> REPORTING
+                        </p>
+                    </div>
+                </a>
+
+                <a href="https://hirac-hazel.vercel.app" target="_blank" rel="noopener noreferrer" class="group block relative">
+                    <div class="card-glow-effect card-hover-glow transition-all duration-500 ease-in-out
+                                bg-gradient-to-br from-card-default to-card-muted/80 border border-border rounded-xl shadow-lg
+                                flex flex-col items-center justify-center w-full aspect-square p-4 sm:p-6 md:p-8">
+                        <div class="flex-grow flex items-center justify-center mb-2">
+                            <img src="https://placehold.co/80x80/1a2a3a/ffffff?text=HIRAC" alt="hirac icon" class="h-16 w-16 sm:h-20 sm:w-20 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/80x80/1a2a3a/000000?text=Error'; this.style.filter='invert(1)'"/>
+                        </div>
+                        <p class="text-card-foreground text-sm sm:text-base font-light text-center leading-tight">
+                            HIRAC <span class="text-primary-default font-medium">PRO</span> INSPECTION
+                        </p>
+                    </div>
+                </a>
+                
+                <a href="#" target="_blank" rel="noopener noreferrer" class="group block relative">
+                    <div class="card-glow-effect card-hover-glow transition-all duration-500 ease-in-out
+                                bg-gradient-to-br from-card-default to-card-muted/80 border border-border rounded-xl shadow-lg
+                                flex flex-col items-center justify-center w-full aspect-square p-4 sm:p-6 md:p-8">
+                        <div class="flex-grow flex items-center justify-center mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-foreground opacity-80">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="8" x2="16" y2="16"></line>
+                                <line x1="8" y1="12" x2="8" y2="16"></line>
+                                <line x1="12" y1="10" x2="12" y2="16"></line>
+                            </svg>
+                        </div>
+                        <p class="text-card-foreground text-sm sm:text-base font-light text-center leading-tight">
+                            QAEHS <span class="text-primary-default font-medium">PRO</span> AI
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+        </main>
+
+        <!-- New Announcements section moved below the main content -->
+        <div class="container mx-auto px-4 mt-8 md:mt-12 max-w-7xl">
+            <h2 class="text-lg sm:text-xl font-semibold mb-4 text-primary-default">Announcements</h2>
+            <div class="flex overflow-x-auto gap-4 p-2 -m-2">
+                <div class="card-glow-effect bg-gradient-to-br from-card-default to-card-muted/80 border border-border rounded-xl shadow-lg flex-none w-80 p-6">
+                    <h3 class="font-semibold text-card-foreground">New Feature: AI Insights</h3>
+                    <p class="text-sm text-muted-foreground mt-2">Exciting news! The new QAEHS PRO AI feature is now live. Explore powerful new insights for your quality and safety data.</p>
+                </div>
+                 <div class="card-glow-effect bg-gradient-to-br from-card-default to-card-muted/80 border border-border rounded-xl shadow-lg flex-none w-80 p-6">
+                    <h3 class="font-semibold text-card-foreground">Welcome to QAEHS Central</h3>
+                    <p class="text-sm text-muted-foreground mt-2">Welcome to the central hub for all QAEHS applications. Start exploring your tools for safety and quality excellence.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-gradient-to-r from-background to-gray-800/60 backdrop-blur-sm border-t border-primary/20 text-muted-foreground py-6 mt-8">
+            <div class="container mx-auto px-4 text-center text-sm opacity-70">
+                <p>&copy; 2024 QAEHS Central. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
+
